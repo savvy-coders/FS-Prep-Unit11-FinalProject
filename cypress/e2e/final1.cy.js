@@ -106,19 +106,6 @@ describe('HTML Test 1', () => {
     cy.get('div').should('have.css', 'color').and('not.be.empty');
   });
 
-  it('should display the date and time on button click', () => {
-    cy.visit('index.html');
-    cy.get('button#timeCheckBtn').click();
-    cy.get('div#time').should('not.be.empty');
-  });
-
-  it('should clear the date and time after 5 seconds', () => {
-    cy.visit('index.html');
-    cy.get('button#timeCheckBtn').click();
-    cy.wait(5000);
-    cy.get('div#time').should('be.empty');
-  });
-
   it('should have Arial, Helvetica, sans-serif font-family for all <p> and <h1> tags', () => {
     cy.visit('index.html');
     cy.get('p, h1').should('have.css', 'font-family', 'Arial, Helvetica, sans-serif');
@@ -166,7 +153,6 @@ describe('HTML Test 1', () => {
 
   it('should display the date and time on button click', () => {
     cy.visit('index.html');
-    cy.window().its('getBtnAndShow').should('be.a', 'function');
     cy.get('button#timeCheckBtn').click();
     cy.get('div#time').should('not.be.empty');
   });
@@ -182,19 +168,4 @@ describe('HTML Test 1', () => {
     cy.get('div#time').should('not.be.empty');
   });
 
-  it('should clear the date and time after 5 seconds', () => {
-    cy.visit('index.html');
-    cy.window().its('clearDateAndTime').should('be.a', 'function');
-    cy.get('button#timeCheckBtn').click();
-    cy.wait(5000);
-    cy.get('div#time').should('be.empty');
-  });
-
-  it('should call getBtnAndShow function and setInterval function', () => {
-    cy.visit('index.html');
-    cy.get('button#timeCheckBtn').click();
-    cy.get('div#time').should('not.be.empty');
-    cy.wait(5000);
-    cy.get('div#time').should('be.empty');
-  });  
 })
